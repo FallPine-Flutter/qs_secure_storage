@@ -11,7 +11,10 @@ class QsSecureStorage {
   static const storage = FlutterSecureStorage();
 
   /// 设置字符串值
-  static Future<void> setString(String key, String value) async {
+  static Future<void> setString({
+    required String key,
+    required String value,
+  }) async {
     try {
       await storage.write(key: key, value: value);
     } catch (e) {
@@ -20,7 +23,7 @@ class QsSecureStorage {
   }
 
   /// 获取字符串值
-  static Future<String?> getString(String key) async {
+  static Future<String?> getString({required String key}) async {
     try {
       return await storage.read(key: key);
     } catch (e) {
@@ -30,7 +33,7 @@ class QsSecureStorage {
   }
 
   /// 删除字符串值
-  static Future<void> deleteString(String key) async {
+  static Future<void> deleteString({required String key}) async {
     try {
       await storage.delete(key: key);
     } catch (e) {
